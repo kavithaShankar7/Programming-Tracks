@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<title> Text to speech conversion </title>
+		<style>
+			body {
+			    font-family:arial;
+			}
+			input {
+			    padding: 10px;
+			    width: 20%;
+			    border-radius: 5px;
+			    border: solid 2px #BBB;
+				margin:10px 0px;
+			}
+			p {
+			    font-size: small;
+			}
+			button {
+			    padding:10px;
+			    background-color:#6a67ce;
+			    color: #FFFFFF;
+			    border: 0px;
+			    cursor:pointer;
+			    border-radius: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<h3> Text to speech conversion </h3>
+		<p> Enter text in the textbox and click on the Speech button to convert text into speech </p>
+		<input type="text" id="textToSpeech"/>
+		<br/>
+		<button onclick="speech('play')"> Play </button>	
+		<button onclick="speech('pause')"> Pause </button>	
+		<button onclick="speech('resume')"> Resume </button>		
+	</body>
+	<script>
+		function speech(value) {
+			if ( 'speechSynthesis' in window ){
+			var text = document.getElementById('textToSpeech').value;
+			var speech = new SpeechSynthesisUtterance();
+			speech.lang = 'en-US';
+			speech.text = text;
+			speech.rate = 1;
+			speech.pitch = 1;
+			speech.volume = 1;
+			if(value == 'play'){
+				window.speechSynthesis.speak(speech);
+			}
+			if(value == 'pause'){
+				window.speechSynthesis.pause(speech);
+			}
+			if(value == 'resume'){
+				window.speechSynthesis.resume(speech);
+			}
+			}
+
+		}
+		
+	</script>
+</html>
