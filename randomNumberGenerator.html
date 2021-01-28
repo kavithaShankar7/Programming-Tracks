@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title> Random Number Generator </title>
+		<style>
+			body {
+			    font-family:arial;
+			}
+			input {
+			    padding: 10px;
+			    width: 20%;
+			    border-radius: 5px;
+			    border: solid 2px #BBB;
+				margin:10px 0px;
+			}
+			p {
+			    font-size: small;
+			}
+			button {
+			    padding:10px;
+			    background-color:#6a67ce;
+			    color: #FFFFFF;
+			    border: 0px;
+			    cursor:pointer;
+			    border-radius: 5px;
+			}
+		</style>
+	</head>
+	<body>
+        <div id='mainClass'>
+            <h3> Random Number Generator </h3>
+            <p> Input two values say maximum and minimum values, a random number will be picked between the given range </p>
+            Max Number:<input type="number" id="maxNum"/>
+            <br/>
+            Min Number:<input type="number" id="minNum"/>
+            <br/>
+            <button onclick="generateNumber()"> Generate Random Number </button>
+        </div>		
+	</body>
+	<script>
+		function generateNumber() {
+            let maxVal = document.getElementById('maxNum').value;
+            let minVal = document.getElementById('minNum').value;
+            min = Math.ceil(minVal);
+            max = Math.floor(maxVal);
+            result = Math.floor(Math.random() * (max - min) + min);
+            console.log(result);
+            var node = document.createElement('p');
+            node.innerHTML = `Random Number Generated is ${result}`;
+            document.getElementById('mainClass').appendChild(node);
+		}
+	</script>
+</html>
